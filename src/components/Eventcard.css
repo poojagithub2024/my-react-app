@@ -1,0 +1,142 @@
+.event-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 125px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #3025e9;
+  color: #ffffff;
+  text-align: center;
+}
+
+.event-image span {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding: 18px;
+}
+
+.event-category {
+  margin: 0 0 8px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.event-details h2 {
+  margin: 0 0 12px;
+  color: #1f2937;
+  font-size: 21px;
+}
+
+.event-description {
+  min-height: 55px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.event-info {
+  margin: 6px 0;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.event-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.event-buttons button {
+  padding: 9px 11px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-btn {
+  background: #3025e9;
+  color: #ffffff;
+}
+
+.favorite-btn {
+  background: #f3e9c8;
+  color: #6b5310;
+}
+
+.remove-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.event-buttons button:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .event-details {
+    padding: 13px;
+  }
+
+  .event-buttons button {
+    padding: 8px;
+  }
+}
+.view-details-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid #3025e9;
+  border-radius: 8px;
+  color: #3025e9;
+  background: transparent;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.view-details-btn:hover {
+  background: #3025e9;
+  color: #ffffff;
+}

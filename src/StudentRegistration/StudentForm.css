@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px 10px;
+  background: #f2f4f8;
+  font-family: Arial, sans-serif;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.registration-container {
+  max-width: 550px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.registration-container h1,
+.registration-container h2 {
+  text-align: center;
+  color: #174ea6;
+}
+
+.registration-container h1 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.registration-container h2 {
+  font-size: 18px;
+  margin-bottom: 25px;
+  font-weight: normal;
+}
+
+.registration-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-container form > label {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+}
+
+.registration-container input:not([type="radio"]),
+.registration-container select,
+.registration-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.registration-container textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.registration-container input:focus,
+.registration-container select:focus,
+.registration-container textarea:focus {
+  outline: 2px solid #9bbcf5;
+  border-color: #174ea6;
+}
+
+.registration-container .registration-radio {
+  display: flex;
+  gap: 25px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  align-items: center;
+}
+
+.registration-container .registration-radio label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: normal;
+  cursor: pointer;
+  margin: 0;
+}
+
+.registration-container input[type="radio"] {
+  cursor: pointer;
+  margin: 0;
+}
+
+.registration-container .registration-error {
+  color: #d00000;
+  font-size: 13px;
+  margin: 4px 0 0 0;
+  text-align: left;
+}
+
+.registration-container .registration-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.registration-container button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #174ea6;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registration-container button:hover {
+  background: #0d3475;
+}
+
+.registration-container .registration-summary {
+  margin-top: 25px;
+  padding: 15px 20px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.registration-summary p {
+  margin: 8px 0;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .registration-container {
+    padding: 20px 15px;
+  }
+
+  .registration-container h1 {
+    font-size: 20px;
+  }
+
+  .registration-container .registration-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Dark theme registration form fixes */
+.App.theme-dark #registration label,
+.App.theme-dark #registration legend,
+.App.theme-dark #registration h1,
+.App.theme-dark #registration h2,
+.App.theme-dark #registration h3,
+.App.theme-dark #registration p {
+  color: #f8fafc;
+}
+
+/* Dark theme: registration form text */
+.App.theme-dark .registration-container {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.App.theme-dark .registration-container h1,
+.App.theme-dark .registration-container h2,
+.App.theme-dark .registration-container label,
+.App.theme-dark .registration-container legend {
+  color: #f8fafc;
+}
+
+.App.theme-dark .registration-container input:not([type="radio"]),
+.App.theme-dark .registration-container select,
+.App.theme-dark .registration-container textarea {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+.App.theme-dark .registration-container input::placeholder,
+.App.theme-dark .registration-container textarea::placeholder {
+  color: #94a3b8;
+}

@@ -1,0 +1,120 @@
+.events-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 28px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+.events-header {
+  margin-bottom: 32px;
+}
+
+.events-eyebrow {
+  margin: 0 0 10px;
+  color: #7c83a0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.events-header h1 {
+  margin: 0 0 12px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.events-subtitle {
+  margin: 0 0 24px;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.add-event-btn {
+  padding: 12px 18px;
+  background: #172033;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-event-btn:hover {
+  background: #3025e9;
+}
+
+/* Three cards in a single row */
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.no-events {
+  color: #6b7280;
+  padding: 24px 0;
+}
+
+/* Tablet: two cards per row */
+@media (min-width: 600px) and (max-width: 900px) {
+  .events-page {
+    padding: 30px 20px;
+  }
+
+  .event-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* Mobile: one card per row */
+@media (max-width: 599px) {
+  .events-page {
+    padding: 24px 16px;
+  }
+
+  .events-header h1 {
+    font-size: 28px;
+  }
+
+  .event-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Dark theme text fixes */
+.App.theme-dark .events-header h2,
+.App.theme-dark .events-header h3,
+.App.theme-dark .events-header p {
+  color: #f8fafc;
+}
+
+.App.theme-dark .event-search,
+.App.theme-dark .event-sort label {
+  color: #f8fafc;
+}
+
+/* Dark theme: event section */
+.App.theme-dark .events-page {
+  color: #f8fafc;
+}
+
+.App.theme-dark .events-header h1,
+.App.theme-dark .events-header h2,
+.App.theme-dark .events-header h3,
+.App.theme-dark .events-header p,
+.App.theme-dark .no-events {
+  color: #f8fafc;
+}
+
+.App.theme-dark .events-subtitle {
+  color: #cbd5e1;
+}
+
