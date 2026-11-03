@@ -1,198 +1,455 @@
-* {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  padding: 20px 10px;
-  background: #f2f4f8;
-  font-family: Arial, sans-serif;
-  color: #222;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-.registration-container {
-  max-width: 550px;
+.registration-page {
   width: 100%;
-  margin: 20px auto;
-  padding: 30px 25px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  min-height: 650px;
+  padding: 55px 20px 70px;
+  background: #f5f6fa;
 }
 
-.registration-container h1,
-.registration-container h2 {
+.registration-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 35px 38px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  color: #172033;
+}
+
+.registration-heading {
+  margin-bottom: 30px;
   text-align: center;
-  color: #174ea6;
 }
 
-.registration-container h1 {
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 5px;
+.registration-eyebrow {
+  margin: 0 0 10px;
+  color: #777f9a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
 }
 
-.registration-container h2 {
-  font-size: 18px;
-  margin-bottom: 25px;
-  font-weight: normal;
+.registration-heading h1 {
+  margin: 0 0 10px;
+  color: #172033;
+  font-size: 29px;
+  font-weight: 800;
 }
 
-.registration-container form {
+.registration-heading > p:last-child {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.registration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 22px;
+}
+
+.registration-field {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.registration-container form > label {
-  margin-top: 14px;
-  margin-bottom: 6px;
-  font-weight: bold;
-  text-align: left;
-  display: block;
+.registration-field.full-width {
+  grid-column: 1 / -1;
 }
 
-.registration-container input:not([type="radio"]),
-.registration-container select,
-.registration-container textarea {
+.registration-field > label,
+.registration-field legend {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.registration-field label span {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.registration-field input:not([type="radio"]):not([type="checkbox"]),
+.registration-field select,
+.registration-field textarea {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
+  min-height: 43px;
+  padding: 11px 13px;
+  border: 1px solid #dce1e9;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #172033;
+  font-family: inherit;
+  font-size: 13px;
 }
 
-.registration-container textarea {
-  min-height: 90px;
+.registration-field textarea {
+  min-height: 100px;
   resize: vertical;
 }
 
-.registration-container input:focus,
-.registration-container select:focus,
-.registration-container textarea:focus {
-  outline: 2px solid #9bbcf5;
-  border-color: #174ea6;
+.registration-field input:focus,
+.registration-field select:focus,
+.registration-field textarea:focus {
+  border-color: #3025e9;
+  box-shadow: 0 0 0 3px rgba(48, 37, 233, 0.08);
 }
 
-.registration-container .registration-radio {
-  display: flex;
-  gap: 25px;
-  margin-top: 6px;
-  margin-bottom: 4px;
-  align-items: center;
-}
-
-.registration-container .registration-radio label {
+.attendance-options {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-weight: normal;
-  cursor: pointer;
-  margin: 0;
+  gap: 28px;
+  min-height: 38px;
 }
 
-.registration-container input[type="radio"] {
-  cursor: pointer;
-  margin: 0;
-}
-
-.registration-container .registration-error {
-  color: #d00000;
+.attendance-options label,
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #475569;
   font-size: 13px;
-  margin: 4px 0 0 0;
-  text-align: left;
+  font-weight: 400;
+  cursor: pointer;
 }
 
-.registration-container .registration-buttons {
+.attendance-options input,
+.accessibility-option input {
+  accent-color: #3025e9;
+}
+
+.registration-field small {
+  color: #948f8f;
+  font-size: 12px;
+}
+
+.registration-buttons {
   display: flex;
   gap: 12px;
-  margin-top: 25px;
+  margin-top: 28px;
 }
 
-.registration-container button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  background: #174ea6;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
+.registration-buttons button {
+  min-height: 44px;
+  padding: 11px 20px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s ease;
 }
 
-.registration-container button:hover {
-  background: #0d3475;
+.submit-registration {
+  flex: 1;
+  border: 1px solid #3025e9;
+  background: #3025e9;
+  color: #ffffff;
 }
 
-.registration-container .registration-summary {
-  margin-top: 25px;
-  padding: 15px 20px;
-  background: #e8f5e9;
-  border-radius: 8px;
+.submit-registration:hover {
+  background: #2118c7;
+}
+
+.reset-registration {
+  border: 1px solid #dce1e9;
+  background: #ffffff;
+  color: #475569;
+}
+
+.reset-registration:hover {
+  background: #f1f5f9;
+}
+
+.registration-summary {
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid #bbebc7;
+  border-radius: 9px;
+  background: #f0fdf4;
+  color: #166534;
   overflow-wrap: anywhere;
 }
 
-.registration-summary p {
-  margin: 8px 0;
+.registration-summary h2 {
+  margin: 0 0 10px;
+  font-size: 19px;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
+.registration-summary p {
+  margin: 7px 0;
+  font-size: 13px;
+}
+
+/* Dark theme */
+.App.theme-dark .registration-page {
+  background: #0f172a;
+}
+
+.App.theme-dark .registration-container {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.App.theme-dark .registration-heading h1,
+.App.theme-dark .registration-field > label,
+.App.theme-dark .registration-field legend,
+.App.theme-dark .attendance-options label,
+.App.theme-dark .accessibility-option {
+  color: #f8fafc;
+}
+
+.App.theme-dark .registration-field input:not([type="radio"]):not([type="checkbox"]),
+.App.theme-dark .registration-field select,
+.App.theme-dark .registration-field textarea {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+.App.theme-dark .reset-registration {
+  background: #334155;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+@media (max-width: 650px) {
+  .registration-page {
+    padding: 30px 14px 45px;
   }
 
   .registration-container {
-    padding: 20px 15px;
+    padding: 25px 19px;
   }
 
-  .registration-container h1 {
-    font-size: 20px;
+  .registration-heading h1 {
+    font-size: 24px;
   }
 
-  .registration-container .registration-buttons {
+  .registration-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-field.full-width {
+    grid-column: auto;
+  }
+
+  .registration-buttons {
     flex-direction: column;
   }
 }
 
-/* Dark theme registration form fixes */
-.App.theme-dark #registration label,
-.App.theme-dark #registration legend,
-.App.theme-dark #registration h1,
-.App.theme-dark #registration h2,
-.App.theme-dark #registration h3,
-.App.theme-dark #registration p {
-  color: #f8fafc;
+.registration-page {
+  padding: 35px 20px 45px;
 }
 
-/* Dark theme: registration form text */
-.App.theme-dark .registration-container {
-  background-color: #1e293b;
-  color: #f8fafc;
+.registration-container {
+  max-width: 760px;
+  padding: 28px 32px;
 }
 
-.App.theme-dark .registration-container h1,
-.App.theme-dark .registration-container h2,
-.App.theme-dark .registration-container label,
-.App.theme-dark .registration-container legend {
-  color: #f8fafc;
+/* Heading */
+.registration-heading {
+  margin-bottom: 23px;
 }
 
-.App.theme-dark .registration-container input:not([type="radio"]),
-.App.theme-dark .registration-container select,
-.App.theme-dark .registration-container textarea {
-  background-color: #0f172a;
-  color: #f8fafc;
-  border-color: #475569;
+.registration-heading h1 {
+  font-size: 27px;
 }
 
-.App.theme-dark .registration-container input::placeholder,
-.App.theme-dark .registration-container textarea::placeholder {
-  color: #94a3b8;
+.registration-heading > p:last-child {
+  margin-top: 6px;
+}
+
+/* Compact form spacing */
+.registration-grid {
+  gap: 15px 20px;
+}
+
+.registration-field {
+  gap: 7px;
+  text-align: left;
+}
+
+.registration-field > label,
+.registration-field legend {
+  text-align: left;
+}
+
+.registration-field input:not([type="radio"]):not([type="checkbox"]),
+.registration-field select {
+  min-height: 40px;
+  padding: 9px 12px;
+}
+
+.registration-field textarea {
+  min-height: 85px;
+  padding: 10px 12px;
+}
+
+/* Attendance options */
+.registration-field fieldset {
+  text-align: left;
+}
+
+.attendance-options {
+  min-height: 30px;
+  gap: 25px;
+  justify-content: flex-start;
+}
+
+/* Accessibility checkbox */
+.accessibility-option {
+  justify-content: flex-start;
+}
+
+/* Buttons */
+.registration-buttons {
+  margin-top: 20px;
+}
+
+.registration-buttons button {
+  min-height: 41px;
+}
+
+
+@media (max-width: 650px) {
+  .registration-container {
+    padding: 23px 18px;
+  }
+
+  .registration-grid {
+    gap: 14px;
+  }
+}
+
+
+.registration-page {
+  padding: 24px 16px 40px;
+}
+
+.registration-container {
+  max-width: 900px;
+  padding: 26px 20px;
+  border-radius: 10px;
+}
+
+.registration-heading {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.registration-heading h1 {
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+
+.registration-heading > p:last-child {
+  font-size: 13px;
+}
+
+.registration-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px 12px;
+}
+
+.registration-field {
+  gap: 5px;
+}
+
+.registration-field > label,
+.registration-field legend {
+  font-size: 11px;
+  text-align: left;
+}
+
+.registration-field input:not([type="radio"]):not([type="checkbox"]),
+.registration-field select {
+  min-height: 29px;
+  padding: 6px 9px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.registration-field textarea {
+  min-height: 62px;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.field-hint {
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.attendance-options {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  min-height: auto;
+}
+
+.attendance-options label,
+.accessibility-option {
+  font-size: 11px;
+}
+
+.registration-buttons {
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.registration-buttons button {
+  flex: 0 0 auto;
+  min-height: 29px;
+  padding: 7px 13px;
+  font-size: 11px;
+  border-radius: 5px;
+}
+
+.registration-buttons .submit-registration {
+  flex: 0 0 auto;
+}
+
+.registration-summary {
+  margin-top: 17px;
+  padding: 13px;
+  border-radius: 6px;
+}
+
+.registration-summary h2 {
+  font-size: 15px;
+}
+
+.registration-summary p {
+  font-size: 11px;
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .registration-container {
+    padding: 22px 16px;
+  }
+
+  .registration-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .registration-field.full-width {
+    grid-column: auto;
+  }
 }

@@ -140,3 +140,79 @@
   background: #3025e9;
   color: #ffffff;
 }
+
+/* Reference layout: horizontal event cards */
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 250px;
+  height: auto;
+  overflow: hidden;
+}
+
+.event-image {
+  flex: 0 0 78px;
+  width: 78px;
+  min-width: 78px;
+  min-height: 100%;
+  padding: 12px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.event-image span {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.event-details {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-details h2 {
+  text-align: left;
+  margin: 8px 0;
+}
+
+.event-description,
+.event-info {
+  text-align: left;
+}
+
+.event-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .event-card {
+    min-height: 220px;
+  }
+
+  .event-image {
+    flex-basis: 60px;
+    width: 60px;
+    min-width: 60px;
+  }
+
+  .event-details {
+    padding: 14px;
+  }
+}

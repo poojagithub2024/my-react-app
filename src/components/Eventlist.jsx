@@ -1,12 +1,8 @@
 
 import { useState } from "react";
 import EventCard from "./Eventcard";
-import EventSearch from "./EventSearch";
-import CategoryFilter from "./CategoryFilter";
-import EventSort from "./EventSort";
 import { useEvents } from "../context/EventContext";
 import "./Eventlist.css";
-import CommonButton from "./Button";
 
 function EventList() {
   const { state, dispatch } = useEvents();
@@ -14,12 +10,65 @@ function EventList() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [sortOption, setSortOption] = useState("default");
+
+  const [formData, setFormData] = useState({
+    title: "",
+    category: "",
+    date: "",
+    venue: "",
+    description: "",
+  });
 
   const categories = [
     "All",
     ...new Set(events.map((event) => event.category)),
   ];
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
+
+  const handleAddEvent = (event) => {
+    event.preventDefault();
+
+    const newEvent = {
+      id: Date.now(),
+      title: formData.title.trim(),
+      category: formData.category.trim(),
+      description: formData.description.trim(),
+      date: new Date(`${formData.date}T00:00:00`).toLocaleDateString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      ),
+      venue: formData.venue.trim(),
+      registrations: 0,
+    };
+
+    dispatch({ type: "ADD_EVENT", payload: newEvent });
+
+    setFormData({
+      title: "",
+      category: "",
+      date: "",
+      venue: "",
+      description: "",
+    });
+  };
+
+  const handleResetFilters = () => {
+    setSearchTerm("");
+    setSelectedCategory("All");
+    
+  };
 
   const filteredEvents = events.filter((event) => {
     const search = searchTerm.toLowerCase().trim();
@@ -30,23 +79,13 @@ function EventList() {
 
     const matchesSearch =
       event.title.toLowerCase().includes(search) ||
-      event.venue.toLowerCase().includes(search);
+      event.venue.toLowerCase().includes(search) ||
+      event.category.toLowerCase().includes(search);
 
     return matchesCategory && matchesSearch;
   });
 
-  const sortedEvents = [...filteredEvents].sort((a, b) => {
-    switch (sortOption) {
-      case "name":
-        return a.title.localeCompare(b.title);
-      case "date":
-        return new Date(a.date) - new Date(b.date);
-      case "registrations":
-        return b.registrations - a.registrations;
-      default:
-        return 0;
-    }
-  });
+  
 
   const handleRegister = (id) => {
     if (registered.includes(id)) {
@@ -65,60 +104,130 @@ function EventList() {
     dispatch({ type: "REMOVE_EVENT", payload: { id } });
   };
 
-  const handleAddEvent = () => {
-    const newEvent = {
-      id: Date.now(),
-      title: "New Campus Event",
-      category: "Campus",
-      description:
-        "Join us to learn new skills and connect with students.",
-      date: "December 5, 2026",
-      venue: "College Auditorium",
-      registrations: 0,
-    };
-
-    dispatch({ type: "ADD_EVENT", payload: newEvent });
-  };
-
   return (
     <section className="events-page">
-      <header className="events-header">
+      <div className="events-heading">
         <p className="events-eyebrow">DISCOVER YOUR CAMPUS</p>
         <h1>Upcoming Events</h1>
-
         <p className="events-subtitle">
           Find opportunities to learn, connect, and participate.
         </p>
+      </div>
 
-        <CommonButton
-            className="add-event-btn"
-            onClick={handleAddEvent}>Add Sample Event
-        </CommonButton>
+      <form className="add-event-form" onSubmit={handleAddEvent}>
+        <h2>Add a New Event</h2>
 
-        <EventSearch
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
+        <div className="event-form-grid">
+          <div className="form-group">
+            <label htmlFor="event-title">Event Title</label>
+            <input
+              id="event-title"
+              name="title"
+              type="text"
+              placeholder="Enter event title"
+              value={formData.title}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="event-category">Category</label>
+            <input
+              id="event-category"
+              name="category"
+              type="text"
+              placeholder="e.g. Technology, Culture, Sports"
+              value={formData.category}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="event-date">Date</label>
+            <input
+              id="event-date"
+              name="date"
+              type="date"
+              value={formData.date}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="event-venue">Venue</label>
+            <input
+              id="event-venue"
+              name="venue"
+              type="text"
+              placeholder="Enter event venue"
+              value={formData.venue}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="form-group full-width">
+            <label htmlFor="event-description">Description</label>
+            <textarea
+              id="event-description"
+              name="description"
+              placeholder="Write a short description of the event..."
+              value={formData.description}
+              onChange={handleInputChange}
+              rows="3"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" className="add-event-btn">
+          Add Event
+        </button>
+      </form>
+
+      <div className="event-filter-toolbar">
+        <input
+          type="search"
+          className="filter-search"
+          placeholder="Search by title or venue..."
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
         />
 
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-        />
+        <select
+          className="filter-category"
+          value={selectedCategory}
+          onChange={(event) => setSelectedCategory(event.target.value)}
+          aria-label="Filter by category"
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category === "All" ? "All Categories" : category}
+            </option>
+          ))}
+        </select>
 
-        <EventSort
-          sortOption={sortOption}
-          onSortChange={setSortOption}
-        />
-      </header>
+        
+
+        <button
+          type="button"
+          className="reset-filters-btn"
+          onClick={handleResetFilters}
+        >
+          Reset Filters
+        </button>
+      </div>
 
       {events.length === 0 ? (
-        <p className="no-events">No events available.</p>
-      ) : sortedEvents.length === 0 ? (
+        <p className="no-events">No events available. Add your first event!</p>
+      ) : filteredEvents.length === 0 ? (
         <p className="no-events">No matching events found.</p>
       ) : (
         <div className="event-list">
-          {sortedEvents.map((event) => (
+          {filteredEvents.map((event) =>  (
             <EventCard
               key={event.id}
               event={event}
