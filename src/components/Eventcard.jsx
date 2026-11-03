@@ -1,6 +1,6 @@
-
 import { Link } from "react-router-dom";
 import "./Eventcard.css";
+import CommonButton from "./Button";
 
 function EventCard({
   event,
@@ -38,26 +38,27 @@ function EventCard({
         </p>
 
         <div className="event-buttons">
-          <button
+          <CommonButton
             className="register-btn"
             onClick={() => onRegister(event.id)}
+            disabled={isRegistered}
           >
             {isRegistered ? "Registered" : "Register"}
-          </button>
+          </CommonButton>
 
-          <button
+          <CommonButton
             className="favorite-btn"
             onClick={() => onFavorite(event.id)}
           >
             {isFavorite ? "★ Favorited" : "Add Favorite"}
-          </button>
+          </CommonButton>
 
-          <button
+          <CommonButton
             className="remove-btn"
             onClick={() => onRemove(event.id)}
           >
             Remove Event
-          </button>
+          </CommonButton>
 
           <Link
             to={`/events/${event.id}`}

@@ -6,6 +6,7 @@ import CategoryFilter from "./CategoryFilter";
 import EventSort from "./EventSort";
 import { useEvents } from "../context/EventContext";
 import "./Eventlist.css";
+import CommonButton from "./Button";
 
 function EventList() {
   const { state, dispatch } = useEvents();
@@ -89,9 +90,10 @@ function EventList() {
           Find opportunities to learn, connect, and participate.
         </p>
 
-        <button className="add-event-btn" onClick={handleAddEvent}>
-          Add Sample Event
-        </button>
+        <CommonButton
+            className="add-event-btn"
+            onClick={handleAddEvent}>Add Sample Event
+        </CommonButton>
 
         <EventSearch
           searchTerm={searchTerm}
