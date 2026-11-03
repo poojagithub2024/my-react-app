@@ -25,6 +25,19 @@ function AppContent() {
         <Route path="/register" element={<Register />} />
         <Route path="/api-demo" element={<ApiDemo />} />
       </Routes>
+
+      <footer className="site-footer">
+        <p className="footer-logo">CampusConnect</p>
+
+        <p className="footer-tagline">
+          Connecting students through experiences that matter.
+        </p>
+
+        <p className="footer-copyright">
+          © 2026 CampusConnect. All rights reserved.
+        </p>
+      </footer>
+
     </div>
   );
 }
