@@ -75,12 +75,14 @@ function EventDetails() {
           {isFavorite ? "★ Favorited" : "Add Favorite"}
         </button>
       </div>
-
+<br></br>
       <Link to="/events" className="hero-button">
         Back to Events
       </Link>
     </main>
+    
   );
+  
 }
 
 export default EventDetails;
